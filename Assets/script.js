@@ -24,26 +24,37 @@ function writePassword() {
 
 }
 
-//functions to add list of character type arrays to one array
+//randomize characters is filled array
+
+function randomize(passwordLength)
+{
+  console.log(passwordLength);
+  for (var i = 0; i < passwordLength; i++) {
+    //push each randomized character to array dynamically 
+    generatedPassword.push((charList[Math.floor(Math.random() * charList.length)])); 
+  }
+}
+
+//functions to concat all elements in criteria arrays to 1 empty array
 
 function addNumbers()
 {
-charList = charList.concat(num);
+  charList = charList.concat(num);
 }
 
 function addSymbols()
 {
-charList = charList.concat(symbols)
+  charList = charList.concat(symbols)
 }
 
 function addUpperCase()
 {
-charList = charList.concat(upperCase);
+  charList = charList.concat(upperCase);
 }
 
 function addlowerCase()
 {
-charList = charList.concat(lowerCase);
+  charList = charList.concat(lowerCase);
 }
 
 
@@ -51,17 +62,29 @@ function generatePassword(){
 
   var passwordLength = prompt("Please enter the length of the password between 8 and 120")
 
-  if (passwordLength < 8 || passwordLength > 120) //checks if passwordLength is between 8 and 128
+  if (passwordLength < 8 || passwordLength > 128) //checks if passwordLength is between 8 and 128
   {
       //prompt user to re enter password length
       passwordLength = parseInt(prompt("Password length must be between 8 and 128 "));
       console.log(passwordLength);
+        withNumbers = confirm("Would you like to use numbers?");
+        withSymbols = confirm("Would you like to use special characters: !, #, $, %, &, /, (, )");
+        withUppercase = confirm("Would you like to use uppercase letters?");
+        withLowercase = confirm("Would you like to use lowercase letters?");
+        console.log(withNumbers, withSymbols, withUppercase, withLowercase);
+      
+      
   }
-  
+  //checks if nothing was entered
     else if (passwordLength === null)
     {
-      passwordLength = parseInt(prompt("Please enter the length of the password between 8 and 120"));
-      console.log(passwordLength);
+        passwordLength = parseInt(prompt("Password cannot be empty. Please enter the length of the password between 8 and 128"));
+        console.log(passwordLength);
+        withNumbers = confirm("Would you like to use numbers?");
+        withSymbols = confirm("Would you like to use special characters: !, #, $, %, &, /, (, )");
+        withUppercase = confirm("Would you like to use uppercase letters?");
+        withLowercase = confirm("Would you like to use lowercase letters?");
+        console.log(withNumbers, withSymbols, withUppercase, withLowercase);
     }
 
     else 
@@ -71,7 +94,6 @@ function generatePassword(){
         withSymbols = confirm("Would you like to use special characters: !, #, $, %, &, /, (, )");
         withUppercase = confirm("Would you like to use uppercase letters?");
         withLowercase = confirm("Would you like to use lowercase letters?");
-
         console.log(withNumbers, withSymbols, withUppercase, withLowercase);
     };
 
@@ -80,34 +102,33 @@ function generatePassword(){
   if (!withNumbers && !withSymbols && !withUppercase && !withLowercase) 
       {
         window.alert("Atleast one character type should be chosen");
+        return;
       }
 
-
-      else if (withNumbers && withSymbols && withUppercase && withLowercase)
+      // checks which criteria is true
+      else (withNumbers || withSymbols || withUppercase || withLowercase)
       {
-        addNumbers();
-        addSymbols();
+        
+        if (withNumbers){
+          addNumbers();
+        }
+
+        if (withSymbols){
+          addSymbols();
+        }
+
+        if(withUppercase){
         addUpperCase();
+        }
+
+        if(withLowercase){
         addlowerCase();
-        console.log(charList)
+        }
+        console.log(charList);
 
-
-        for (var i = 0; i < passwordLength; i++) {
-          //push each randomized character to array dynamically 
-          generatedPassword.push((charList[Math.floor(Math.random() * charList.length)])); 
-         }
-
-         console.log(generatedPassword);
-
-         return generatedPassword.join("");
-       
-       
-      };
-
-
-
-
-
+        randomize(passwordLength);
+        return generatedPassword.join(""); //return password without delimeters 
+       };
 
 };
 
