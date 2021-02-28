@@ -15,8 +15,14 @@ Invalid input not allowed
  - password length must be between 8 and 128 characters
  - atleast 1 criteria for password generation should be selected.
 
- ![The user is prompted for password](./Assets/Images/PasswordPrompt.png)
+ The user is prompted for length password after selecting generate button:
+
+ ![The user is prompted for length of password](./Assets/Images/PasswordPrompt.png)
+
+ The user inputs criteria: 
  ![User inputs criteria](./Assets/Images/CriteriaPrompt.png)
+
+ Password in generated based on criteria:
  ![Password generated based on criteria selected](./Assets/Images/SamplePassword.png)
  
  # Tests
