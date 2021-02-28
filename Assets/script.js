@@ -24,7 +24,7 @@ function writePassword() {
 
 }
 
-//randomize characters is filled array
+//randomize characters in filled array
 
 function randomize(passwordLength)
 {
@@ -67,6 +67,7 @@ function generatePassword(){
       //prompt user to re enter password length
       passwordLength = parseInt(prompt("Password length must be between 8 and 128 "));
       console.log(passwordLength);
+      //future update: move confirmation to functions
         withNumbers = confirm("Would you like to use numbers?");
         withSymbols = confirm("Would you like to use special characters: !, #, $, %, &, /, (, )");
         withUppercase = confirm("Would you like to use uppercase letters?");
