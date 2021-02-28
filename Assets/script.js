@@ -3,8 +3,8 @@ var generateBtn = document.querySelector("#generate");
 var passwordLength; //variable for store user password length input
 
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var symbols = ["!", "#", "$", "%", "&", "/", ")", "("];
+var num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var symbols = ["!", "#", "$", "%", "&", "/", ")", "(", "^", "@", "+", "-", "?"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var charList = [];
 var generatedPassword = [];
@@ -24,6 +24,7 @@ function writePassword() {
 
 }
 
+//functions to add list of character type arrays to one array
 
 function addNumbers()
 {
@@ -93,11 +94,12 @@ function generatePassword(){
 
         for (var i = 0; i < passwordLength; i++) {
           //push each randomized character to array dynamically 
-          generatedPassword.push(charList[Math.floor(Math.random() * charList.length)]); 
-          generatedPassword.join("");
-          console.log(generatedPassword);
-          return generatedPassword;
-        }
+          generatedPassword.push((charList[Math.floor(Math.random() * charList.length)])); 
+         }
+
+         console.log(generatedPassword);
+
+         return generatedPassword.join("");
        
        
       };
